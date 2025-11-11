@@ -1,37 +1,35 @@
-# 🍽️ Unimeal Student App - Landing Page
+# 🍽️ Unimeal Student App - Download Page
 
-A beautiful, modern, and responsive landing page for the Unimeal Student App.
+A simple, clean, single-page download portal for the Unimeal Student App.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## 🌟 Features
 
-- **Modern Design** - Clean, professional UI with gradient backgrounds
-- **Fully Responsive** - Optimized for mobile, tablet, and desktop
-- **Smooth Animations** - Engaging scroll animations and transitions
-- **SEO Optimized** - Meta tags for social sharing and search engines
-- **Fast Loading** - Optimized performance with minimal dependencies
-- **QR Code Integration** - Easy mobile download via QR code
-- **Call-to-Action** - Multiple download buttons strategically placed
+- **Simple & Clean** - Single-page focused design
+- **Direct Download** - One-click APK download button
+- **QR Code** - Scan with phone for instant download
+- **Fully Responsive** - Works perfectly on all devices
+- **Fast Loading** - Minimal code, maximum speed
+- **No JavaScript** - Pure HTML/CSS for reliability
 
 ## 🛠️ Tech Stack
 
 - **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS Grid, Flexbox, and custom properties
-- **Vanilla JavaScript** - Smooth scrolling and animations
-- **Font Awesome** - Beautiful icons
+- **CSS3** - Modern styling with Flexbox and animations
 - **Google Fonts** - Inter font family
+- **No JavaScript** - Pure HTML/CSS for maximum simplicity
 
 ## 📁 Project Structure
 
 ```
 unimeal-student-landing/
-├── index.html          # Main HTML file
-├── style.css           # Stylesheet
-├── script.js           # JavaScript functionality
+├── index.html          # Single-page download portal
+├── style.css           # Clean, minimal styling
 ├── README.md           # Documentation
 ├── package.json        # Project configuration
+├── vercel.json         # Vercel deployment config
 ├── .gitignore          # Git ignore rules
 └── .github/
     └── workflows/
@@ -126,13 +124,16 @@ Update the APK download link in `index.html`:
 <a href="YOUR_NEW_DOWNLOAD_LINK" class="btn-primary">
 ```
 
-## 📱 Sections
+## 📱 What's Included
 
-1. **Header** - Fixed navigation with logo and download button
-2. **Hero** - Eye-catching gradient background with CTA buttons
-3. **Features** - 6 feature cards highlighting app capabilities
-4. **Download** - Prominent download section with QR code
-5. **Footer** - Contact information and quick links
+- **App Icon & Title** - Clear branding
+- **Version Badge** - Current version display
+- **App Information** - Size, platform, update date
+- **Download Button** - Direct APK download
+- **QR Code** - Mobile-friendly download option
+- **Installation Note** - Setup instructions
+- **Feature List** - Key app capabilities
+- **Footer** - Contact and GitHub links
 
 ## 🌐 Browser Support
 
