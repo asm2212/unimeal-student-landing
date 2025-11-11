@@ -146,6 +146,47 @@ h1 {
 .qr-code {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.qr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.qr-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.qr-btn:active {
+    transform: translateY(0);
+}
+
+.qr-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 .install-note {
@@ -232,6 +273,15 @@ h1 {
     }
     
     .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .qr-actions {
+        flex-direction: column;
+    }
+    
+    .qr-btn {
         width: 100%;
         justify-content: center;
     }

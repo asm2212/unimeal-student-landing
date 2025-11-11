@@ -48,9 +48,28 @@
                 
                 <div class="qr-section">
                     <p class="qr-label">Or scan with your phone</p>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://github.com/asm2212/unimeal-student-landing/releases/download/v1.4.0/unimeal-v1.4.0.apk" 
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://github.com/asm2212/unimeal-student-landing/releases/download/v1.4.0/unimeal-v1.4.0.apk" 
                          alt="Download QR Code" 
-                         class="qr-code">
+                         class="qr-code"
+                         id="qr-code-img">
+                    <div class="qr-actions">
+                        <button onclick="downloadQR()" class="qr-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download QR
+                        </button>
+                        <button onclick="printQR()" class="qr-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                <rect x="6" y="14" width="12" height="8"></rect>
+                            </svg>
+                            Print QR
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="install-note">
@@ -77,5 +96,115 @@
             </footer>
         </div>
     </main>
+    
+    <script>
+        function downloadQR() {
+            const qrImg = document.getElementById('qr-code-img');
+            const link = document.createElement('a');
+            link.href = qrImg.src;
+            link.download = 'unimeal-qr-code.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function printQR() {
+            const qrImg = document.getElementById('qr-code-img');
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Unimeal QR Code - Print</title>
+                    <style>
+                        @media print {
+                            @page { margin: 0; }
+                            body { margin: 1cm; }
+                        }
+                        body {
+                            font-family: 'Inter', Arial, sans-serif;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            min-height: 100vh;
+                            text-align: center;
+                        }
+                        .print-container {
+                            max-width: 600px;
+                            padding: 2rem;
+                        }
+                        h1 {
+                            font-size: 2.5rem;
+                            color: #1f2937;
+                            margin-bottom: 0.5rem;
+                        }
+                        .subtitle {
+                            font-size: 1.2rem;
+                            color: #6b7280;
+                            margin-bottom: 2rem;
+                        }
+                        img {
+                            width: 300px;
+                            height: 300px;
+                            margin: 2rem 0;
+                            border: 2px solid #e5e7eb;
+                            border-radius: 10px;
+                        }
+                        .instructions {
+                            background: #f8fafc;
+                            padding: 1.5rem;
+                            border-radius: 10px;
+                            margin-top: 2rem;
+                            text-align: left;
+                        }
+                        .instructions h3 {
+                            color: #1f2937;
+                            margin-bottom: 1rem;
+                        }
+                        .instructions ol {
+                            color: #6b7280;
+                            line-height: 1.8;
+                        }
+                        .footer {
+                            margin-top: 2rem;
+                            color: #9ca3af;
+                            font-size: 0.9rem;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-container">
+                        <h1>🍽️ Unimeal</h1>
+                        <p class="subtitle">Student Meal Management App</p>
+                        <p style="font-size: 1.1rem; color: #1f2937; margin-bottom: 1rem;">
+                            <strong>Scan to Download</strong>
+                        </p>
+                        <img src="${qrImg.src}" alt="Unimeal QR Code">
+                        <div class="instructions">
+                            <h3>📱 How to Install:</h3>
+                            <ol>
+                                <li>Open your phone camera</li>
+                                <li>Point at the QR code above</li>
+                                <li>Tap the notification to download</li>
+                                <li>Enable "Install from Unknown Sources" if prompted</li>
+                                <li>Install and enjoy!</li>
+                            </ol>
+                        </div>
+                        <div class="footer">
+                            <p><strong>Version 1.4.0</strong> • Android 5.0+ • 103MB</p>
+                            <p>© 2025 Unimeal Student App</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => {
+                printWindow.print();
+            }, 250);
+        }
+    </script>
 </body>
 </html>
