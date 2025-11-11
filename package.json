@@ -1,0 +1,36 @@
+{
+  "name": "unimeal-student-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Unimeal Student App - Modern mobile app for university students",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asm2212/unimeal-student-landing.git"
+  },
+  "keywords": [
+    "unimeal",
+    "student",
+    "app",
+    "landing",
+    "android",
+    "meal",
+    "management",
+    "university",
+    "cafe"
+  ],
+  "author": "Unimeal Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/asm2212/unimeal-student-landing/issues"
+  },
+  "homepage": "https://asm2212.github.io/unimeal-student-landing",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "serve": "^14.2.1"
+  }
+}
