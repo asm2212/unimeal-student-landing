@@ -1,6 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "buildCommand": "mkdir -p public && cp -r index.html style.css script.js public/",
+  "buildCommand": "mkdir -p public && cp index.html style.css public/",
   "outputDirectory": "public"
 }
