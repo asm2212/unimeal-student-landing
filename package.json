@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
-    "build": "echo 'Static site - no build needed'",
+    "build": "mkdir -p public && cp -r index.html style.css script.js public/",
     "deploy": "gh-pages -d ."
   },
   "repository": {

@@ -5,6 +5,7 @@ node_modules/
 .env.local
 dist/
 build/
+public/
 .cache/
 .vscode/
 .idea/
