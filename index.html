@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <main class="download-page">
@@ -59,7 +60,16 @@
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
-                            Download QR
+                            Download PNG
+                        </button>
+                        <button onclick="downloadQRAsPDF()" class="qr-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="12" y1="18" x2="12" y2="12"></line>
+                                <line x1="9" y1="15" x2="15" y2="15"></line>
+                            </svg>
+                            Download PDF
                         </button>
                         <button onclick="printQR()" class="qr-btn">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -106,6 +116,62 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        }
+        
+        function downloadQRAsPDF() {
+            const { jsPDF } = window.jspdf;
+            const qrImg = document.getElementById('qr-code-img');
+            
+            // Create a new PDF document
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+            
+            // Get the QR code image
+            const imgData = qrImg.src;
+            
+            // Add title to the PDF
+            pdf.setFontSize(20);
+            pdf.setTextColor(31, 41, 55); // Dark gray color
+            pdf.text('Unimeal QR Code', 105, 20, { align: 'center' });
+            
+            // Add subtitle
+            pdf.setFontSize(12);
+            pdf.setTextColor(107, 114, 128); // Gray color
+            pdf.text('Scan to download the Unimeal Student App', 105, 30, { align: 'center' });
+            
+            // Add the QR code image to the PDF
+            // Calculate dimensions to fit the QR code nicely on the page
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imageWidth = 100; // mm
+            const imageX = (pdfWidth - imageWidth) / 2;
+            
+            pdf.addImage(imgData, 'PNG', imageX, 40, imageWidth, imageWidth);
+            
+            // Add instructions
+            pdf.setFontSize(14);
+            pdf.setTextColor(31, 41, 55);
+            pdf.text('How to Install:', 20, imageWidth + 50);
+            
+            pdf.setFontSize(11);
+            pdf.setTextColor(107, 114, 128);
+            pdf.text('1. Open your phone camera', 25, imageWidth + 60);
+            pdf.text('2. Point at the QR code above', 25, imageWidth + 67);
+            pdf.text('3. Tap the notification to download', 25, imageWidth + 74);
+            pdf.text('4. Enable "Install from Unknown Sources" if prompted', 25, imageWidth + 81);
+            pdf.text('5. Install and enjoy!', 25, imageWidth + 88);
+            
+            // Add footer
+            pdf.setFontSize(10);
+            pdf.setTextColor(156, 163, 175);
+            pdf.text('Version 1.4.0 • Android 5.0+ • 103MB', 105, pdfHeight - 20, { align: 'center' });
+            pdf.text('© 2025 Unimeal Student App', 105, pdfHeight - 15, { align: 'center' });
+            
+            // Save the PDF
+            pdf.save('unimeal-qr-code.pdf');
         }
         
         function printQR() {
